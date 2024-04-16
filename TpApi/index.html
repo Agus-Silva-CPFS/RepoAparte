@@ -7,28 +7,41 @@
     <link rel="stylesheet" href="style.css">
     <title>Api rest</title>
 </head>
-<!-- https://6398b453fe03352a94dbe15d.mockapi.io/api/empleados -->
 <body>
     <main>
+        <div class="ctnForm">
+            <h1 class="h1Form">Crear empleado</h1>
+            <form action="">
+                <label for="">Nombre</label>
+                <input id="inpNombre" type="text">
+                <label for="">Area</label>
+                <input id="inpArea" type="text">
+                <label for="">Domicilio</label>
+                <input id="inpDom" type="text">
+                <label for="">Id</label>
+                <input type="number" id="nuevoId">
+                <label for="">Imagen</label>
+                <input id="inpImg" type="file">
+                <button id="btnEnviar" type="submit">Submit</button>
+            </form>
+        </div>
         <div class="contenedor">
             <table id="tabla">
                 <thead>
                     <tr>
                         <th>Nombre</th>
                         <th>Area</th>
+                        <th class="thDomicilio ocultar mostrar">Domicilio</th>
+                        <th class="thId ocultar mostrar">Id</th>
                     </tr>
                 </thead>
                 <tbody id="bodyTabla">
-                    
-                </tbody>
-                
+          
+                </tbody>     
             </table>
             <p id="listUsers"></p>
-
         </div>
-
         <button id="get">get</button>
         <script src="index.js"></script>
 </body>
-
 </html>

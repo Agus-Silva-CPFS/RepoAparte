@@ -1,19 +1,71 @@
-
+main{
+  display: flex;
+}
+body{
+  padding: 0;
+  margin: 0;
+}
+#get{
+  background: red;
+  color: white;
+}
+#get:hover{
+  cursor: pointer;
+}
 .contenedor{
-  width: 80%;
   height: 80%;
   border: 1px solid black;
-  background-color: burlywood;
+  background: radial-gradient(#0d4724, #bef5a4);
+  display: flex;
+  justify-content: center;
+}
+.ctnForm{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: fit-content;
+  padding-bottom: 10px;
+  border: 1px solid black;
+  padding-left:10px ;
+  background: radial-gradient(#4c8ec4, #bef5a4);
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input{
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 5px;
+  box-sizing: border-box; 
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
 }
 button{
   max-height: 50px;
   height: 40px;
   width: 40px;
 }
-th{
-  
+th{ 
   height: 30px;
 }
 td{
@@ -33,7 +85,6 @@ table{
   border: 1px solid black;
   text-align: center;
 }
-
 .ocultar{
   display: none;
 }
@@ -43,8 +94,6 @@ table{
 
 .btnMostrar{
   width: fit-content;
-
-
 }
 .btnMostrar:hover{
   background-color: gray;
