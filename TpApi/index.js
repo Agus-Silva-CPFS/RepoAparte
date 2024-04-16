@@ -1,7 +1,9 @@
 
 let get = document.getElementById("get");
-
-
+let thId = document.querySelector('.thId');
+thId.classList.toggle('mostrar')
+let thDomicilio = document.querySelector('.thDomicilio');
+thDomicilio.classList.toggle('mostrar')
 get.addEventListener("click", ()=>{
     try{
         fetch('https://6398b453fe03352a94dbe15d.mockapi.io/api/empleados')
@@ -10,12 +12,20 @@ get.addEventListener("click", ()=>{
             }    
         )    
         .then(datos => {
-            let aux=[];
+            crearEmpleado(datos);
+        })
+        .catch(err => { console.log(err); });    
+    }catch(error){
+        console.log(error)
+    }    
+})
+function crearEmpleado(datos){
+    let aux=[];
             for (let i = 0; i < datos.length; i++) {
                 aux.push(datos[i]);
             }    
             for(let i=0;i<aux.length;i++){
-                 let newTr = document.createElement('TR');
+                let newTr = document.createElement('TR');
                 let tdNombre = document.createElement('TD');
                 let tdArea = document.createElement('TD');
                 let tdDomicilio = document.createElement('TD');
@@ -29,12 +39,15 @@ get.addEventListener("click", ()=>{
                 tdDomicilio.classList.add('ocultar');
                 tdId.classList.add('ocultar');
                 
+                
                 let btnVer = document.createElement('BUTTON');
                 btnVer.classList.add('btnMostrar')
                 btnVer.addEventListener('click', () => {
                     tdDomicilio.classList.toggle('ocultar');
                     tdId.classList.toggle('ocultar');
                     img.classList.toggle('ocultar');
+                    thDomicilio.classList.toggle('mostrar');
+                    thId.classList.toggle('mostrar')
                 });
                 tdNombre.textContent = aux[i].nombre;
                 newTr.appendChild(tdNombre);
@@ -50,10 +63,30 @@ get.addEventListener("click", ()=>{
                 tablebody.appendChild(newTr);
                 newTr.appendChild(img); 
             }
-        })
-        .catch(err => { console.log(err); });    
-    }catch(error){
-        console.log(error)
-    }    
-}) 
+} 
 
+let BtnForm = document.getElementById('btnEnviar');
+BtnForm.addEventListener('click', (e) =>{
+    e.preventDefault();
+    let datos = {
+        nombre: document.getElementById('inpNombre').value,
+        area: document.getElementById('inpArea').value,
+        domicilio: document.getElementById('inpDom').value,
+        imagen:document.getElementById('inpImg').value,
+        id: document.getElementById('nuevoId').value,
+    }
+    try{
+        fetch('https://6398b453fe03352a94dbe15d.mockapi.io/api/empleados',
+        {
+            method:'POST',body:JSON.stringify(datos),
+            headers: { 'Content-Type': 'application/json' }
+         })
+        .then(tabla => {
+            return tabla.json();
+        })
+        .then(tabla => console.log('Respuesta de la Api: ',tabla))
+        .catch(err => { console.log(err)})
+    }catch(error){
+        console.log(error);
+    }
+})
